@@ -23,7 +23,7 @@ import { APP_FILTER } from '@nestjs/core';
     DatabaseModule, 
     UsersModule, 
     AuthenticationModule,
-    MongooseModule.forRoot('mongourl')
+    MongooseModule.forRoot('mongo')
   ],
   controllers: [AppController],
   providers: [
