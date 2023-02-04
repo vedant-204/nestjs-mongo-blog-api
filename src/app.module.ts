@@ -16,6 +16,12 @@ import { APP_FILTER } from '@nestjs/core';
     PostsModule,
     ConfigModule.forRoot({
       validationSchema: Joi.object({
+        MONGO_HOST: Joi.string.required(),
+        MONGO_PORT: Joi.string.required(),
+        MONGO_USER: Joi.string.required(),
+        MONGO_PASSWORD: Joi.string.required(),
+        MONGO_DB: Joi.string.required(),
+        PORT: Joi.string.required(),
         JWT_SECRET: Joi.string().required(),
         JWT_EXPIRATION_TIME: Joi.string().required()
       }),
@@ -23,7 +29,7 @@ import { APP_FILTER } from '@nestjs/core';
     DatabaseModule, 
     UsersModule, 
     AuthenticationModule,
-    MongooseModule.forRoot('mongo')
+    MongooseModule.forRoot('mongodb://${MONGO_USER}:${MONGO_PASSWORD}${MONGO_HOST}/${MONGO_DB}')
   ],
   controllers: [AppController],
   providers: [
